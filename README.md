@@ -3,7 +3,7 @@ This is the Software which automaticaly fucks the website Typewriter.at
 
 Go to settings.txt and type your info like this:
 
-1.username
+1.username \n
 2.password
 3.max letters to write in 10 minutes
 4.min letters to write in 10 minutes
