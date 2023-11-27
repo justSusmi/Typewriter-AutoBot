@@ -30,7 +30,7 @@ maxDelay = 0
 
 try:#----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    fileOpen = open('settings.txt')
+    fileOpen = open('susmi.txt')
 
     file = fileOpen.readlines()
 
@@ -39,6 +39,8 @@ try:#---------------------------------------------------------------------------
     minDelay = 600/int(file[2])
     maxDelay = 600/int(file[3])
     units = file[4]
+    mistakesMin = file[5]
+    mistakesMax = file[6]
 
     fileOpen.close()
 
@@ -64,11 +66,13 @@ except Exception as e:
 clear()
 
 print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Loaded 5 Settings: "   + "\n" + 
-      "Username: " + username           +     
-      "Password: " + password           + 
-      "Minimum Delay: " + str(minDelay) + "\n" +   
-      "Maximum Delay: " + str(maxDelay) + "\n" +   
-      "Units: " + str(units)            + "\n")
+      "Username: " + username                 +     
+      "Password: " + password                 + 
+      "Minimum Delay: " + str(minDelay)       + "\n" +   
+      "Maximum Delay: " + str(maxDelay)       + "\n" +   
+      "Units: " + str(units)                  + 
+      "Minimum Mistakes: " + str(mistakesMin) + 
+      "Maximum Mistakes: " + str(mistakesMax) + "\n")
 
 print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Getting user data. . .")
 print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Visiting website. . .")
@@ -137,6 +141,10 @@ except Exception as e:
 for x in range(int(units)):
     print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Writing unit nr. " + str(x+1) + ". . .")
 
+    mistakes = random.randint(int(mistakesMin), int(mistakesMax))
+    print("Fehler: " + str(mistakes))
+    counter = 0
+
     while True:  
         try:#----------------------------------------------------------------------------------------------------------------------------------------------------------------
             element = WebDriverWait(browser, 5).until(
@@ -149,9 +157,22 @@ for x in range(int(units)):
             keyboard.press(character)
             keyboard.release(character)
 
-            chars = browser.find_element(By.XPATH, '//*[@id="amountRemaining"]').text
+
+            bigChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;,.-_:!?()=/ "
+            
+            if counter == mistakes:
+                continue
+            elif character in bigChars:
+                #print("Replaced Character " + character)
+                mistake = Controller() 
+                mistake.press("a")
+                mistake.release("a")
+                counter += 1
+
+                chars = browser.find_element(By.XPATH, '/html/body/div[5]/div[2]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/span').text
 
         except:
+            
             print("EXCEPT!!!")
             print("Characters: " + chars)
 
