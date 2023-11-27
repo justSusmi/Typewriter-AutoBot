@@ -5,13 +5,13 @@ import time
 import colorama
 from colorama import *
 from colorama import Back, Fore, Style
-from discord_webhook import DiscordEmbed, DiscordWebhook
 from pynput.keyboard import Controller
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 def clear():
@@ -51,9 +51,7 @@ except Exception as e:
 
 try:#----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    options = Options()
-    options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-    browser = webdriver.Firefox(options=options)
+    browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     browser.set_window_size(1000,500)
     browser.get('https://at4.typewriter.at/index.php?r=typewriter/runLevel')
 
