@@ -3,8 +3,7 @@ import random
 import time
 
 import colorama
-from colorama import *
-from colorama import Back, Fore, Style
+from colorama import Back, Fore
 from pynput.keyboard import Controller
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -19,16 +18,44 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.slider import Slider
+from kivy.uix.checkbox import CheckBox
 
 def clear():
     os.system('cls||clear')
 
-def main(username, password, falseDelay, mistakes, units):
+def main(username, password, falseDelay, falseMistakes, falseUnits, saveData):
 
     
-    delay = "".join(x for x in falseDelay if x not in "Type-Speed: ")
+    delay = int(round("".join(x for x in falseDelay if x not in "Type-Speed: \n")))
+    units = int(round("".join(x for x in falseUnits if x not in "Units: \n.0")))
+    mistakes = int(round("".join(x for x in falseMistakes if x not in "Mistakes: \n")))
 
     colorama.init(autoreset=True)
+    
+    if saveData == True:
+        try:#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+            data = [
+                username,
+                password,
+                delay,
+                mistakes,
+                units,
+            ]
+    
+            file = open('settings.txt', 'w')
+        
+            for line in data:
+                file.write(str(line) + "\n")
+        
+            file.close()
+        
+        except Exception as e:
+        
+            print(Back.RED + Fore.BLUE + "[Error]File: " + str(e))
+            time.sleep(10)
+            quit()
+    
 
 
     try:#----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,8 +166,7 @@ def main(username, password, falseDelay, mistakes, units):
                 keyboard.press(character)
                 keyboard.release(character)
 
-
-                bigChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;,.-_:!?()=/ "
+                bigChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;,.-_:!?()=/"
                 
                 if counter == mistakes:
                     continue
@@ -193,6 +219,30 @@ def main(username, password, falseDelay, mistakes, units):
 class gui(MDApp):
     def build(self):
 
+        username = ""
+        password = ""
+        delay = 0
+        mistakes = 0
+        units = 0        
+
+        try:
+            file = open('settings.txt','r')
+
+            data = file.readlines()
+            
+            username = data[0]
+            password = data[1]
+            delay = data[2]
+            mistakes = data[3]
+            units = data[4]
+            
+            file.close()
+        except Exception as e:
+            print(Back.RED + Fore.BLUE + "[Error]No Data found: " + str(e))
+            
+
+
+
         screen = Screen()
 
         title = MDLabel(text="Typefucker", 
@@ -206,7 +256,8 @@ class gui(MDApp):
                         height=40,
                         pos_hint={'center_x':0.65,
                         'center_y':0.8}, 
-                        multiline=False)
+                        multiline=False,
+                        text=username)
         
         labelUsername = MDLabel(text="Username",
                         text_color=(0.5, 0, 0.5, 1),
@@ -219,7 +270,8 @@ class gui(MDApp):
                         height=40,
                         pos_hint={'center_x':0.65,
                         'center_y':0.7}, 
-                        multiline=False)
+                        multiline=False,
+                        text=password)
 
         labelPassword = MDLabel(text="Password",
                         text_color=(0.5, 0, 0.5, 1),
@@ -227,26 +279,77 @@ class gui(MDApp):
                         pos_hint={'center_x':0.53,
                         'center_y':0.7})
 
-        Typespeed = Slider(min = 0, max = 100000)
 
-       
+        Typespeed = Slider(min = 0, max = 100000, 
+                           size_hint=(1, 0.2), 
+                           pos_hint={'center_x':0.5,
+                           'center_y':0.55},
+                           step=1, value=(float(delay)))
 
-        TypespeedLabel = MDLabel(text="Type-Speed: ",
+        TypespeedLabel = MDLabel(text="Type-Speed: " + str(delay),
                         text_color=(0.5, 0, 0.5, 1),
                         theme_text_color="Custom",
                         pos_hint={'center_x':0.53,
-                        'center_y':0.6})
+                        'center_y':0.6},
+                        color=[0.5, 0, 0.5, 1])
+        
+        mistake= Slider(min = 0, max = 50, 
+                           size_hint=(1, 0.2), 
+                           pos_hint={'center_x':0.5,
+                           'center_y':0.45},
+                           step=1,
+                           value=(float(mistakes)))
 
-        def OnSliderValueChange(instance, value):
+        mistakeLabel = MDLabel(text="Mistakes: " + str(mistakes),
+                        text_color=(0.5, 0, 0.5, 1),
+                        theme_text_color="Custom",
+                        pos_hint={'center_x':0.53,
+                        'center_y':0.50})
+        
+        unit = Slider(min = 0, max = 50, 
+                           size_hint=(1, 0.2), 
+                           pos_hint={'center_x':0.5,
+                           'center_y':0.35},
+                           step=1,
+                           value=(float(units)))
+
+        unitLabel = MDLabel(text="Units: " + str(units),
+                        text_color=(0.5, 0, 0.5, 1),
+                        theme_text_color="Custom",
+                        pos_hint={'center_x':0.53,
+                        'center_y':0.4})
+        
+        saveData = CheckBox(pos_hint={'center_x':0.5,
+                                      'center_y':0.25},
+                                        color=[0.5, 0, 0.5, 1],
+                                        size_hint=(0.1, 0.1))
+        
+        saveDataLabel = MDLabel(text="Save Data", 
+                                text_color=(0.5, 0, 0.5, 1),
+                                theme_text_color="Custom",
+                                pos_hint={'center_x':0.85,
+                                'center_y':0.25})
+
+        def OnSliderValueChangeTypespeed(instance, value):
                 TypespeedLabel.text = "Type-Speed: " + str(value)
 
-        Typespeed.bind(value=OnSliderValueChange)
+        Typespeed.bind(value=OnSliderValueChangeTypespeed)
+        
+        def OnSliderValueChangeMistakes(instance, value):
+                mistakeLabel.text = "Mistakes: " + str(value)
+
+        mistake.bind(value=OnSliderValueChangeMistakes)
+        
+        def OnSliderValueChangeUnits(instance, value):
+                unitLabel.text = "Units: " + str(value)
+
+        unit.bind(value=OnSliderValueChangeUnits)
 
         def start(self):
                     username = str(inputUsername.text)
                     password = str(inputPassword.text)
                     print(username + "\n" + password)
-                    main(username, password, TypespeedLabel.text, 10, 10)
+                    main(username, password, TypespeedLabel.text, mistakeLabel.text, unitLabel.text, saveData.active)
                     
 
         buttonStart = Button(text="Start", background_color=(0.5, 0, 0.5, 1), size=(800, 50), size_hint=(None, None))
@@ -263,6 +366,12 @@ class gui(MDApp):
         screen.add_widget(buttonStart)
         screen.add_widget(Typespeed)
         screen.add_widget(TypespeedLabel)
+        screen.add_widget(mistake)
+        screen.add_widget(mistakeLabel)
+        screen.add_widget(unit)
+        screen.add_widget(unitLabel)
+        screen.add_widget(saveData)
+        screen.add_widget(saveDataLabel)
         return screen
 
 Typefucker = gui()
