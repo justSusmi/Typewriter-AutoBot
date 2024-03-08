@@ -1,7 +1,0 @@
-username
-password
-min
-max
-units
-mistakes min
-mistakes max
