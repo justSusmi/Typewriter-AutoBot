@@ -32,7 +32,18 @@ class Typewriter:
         
         self.clear()
         
-        print("Welcome to Typefucker by susmi ")
+        print("""
+ _______                __            _              
+|__   __|              / _|          | |             
+   | |_   _ _ __   ___| |_ _   _  ___| | _____ _ __  
+   | | | | | '_ \ / _ \  _| | | |/ __| |/ / _ \ '__| 
+   | | |_| | |_) |  __/ | | |_| | (__|   <  __/ |         by susmi
+   |_|\__, | .__/ \___|_|  \__,_|\___|_|\_\___|_|    
+      __/ | |                                       
+     |___/|_|                                       
+""")
+        
+
         saveData = input("Do you want to start with data from last session? no/yes \n")
 
         if saveData == "yes":
