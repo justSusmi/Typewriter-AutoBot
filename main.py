@@ -23,6 +23,7 @@ class Typewriter:
         self.units = 0 
         self.minDelay = 0
         self.maxDelay = 0
+        self.counter = 0
         
         self.menu()
 
@@ -113,14 +114,18 @@ class Typewriter:
             time.sleep(2)
             self.clear()
             self.registerInfo()
-        
+
     def clear(self):#-----------------------------------------------------------------------------------------
         os.system('cls||clear')
         
     def start(self):#-----------------------------------------------------------------------------------------
+        
+        current_directory = os.getcwd()
+        geckodriver_path = os.path.join(current_directory, "Typefucker-main", "geckodriver")
+        
         options = Options()
         options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-        browser = webdriver.Firefox(options=options)
+        browser = webdriver.Firefox(options=options, executable_path=geckodriver_path)
 
 
         driver = drivehelper.WebDrive(browser=browser, delay=5)
@@ -165,6 +170,7 @@ class Typewriter:
                     EC.visibility_of_element_located((By.XPATH, '/html/body/div[5]/div[2]/div[3]/div[2]/div[2]/span[1]')))
                     character = element.text
                     
+
                     keyboard = Controller() 
                     keyboard.press(character)
                     keyboard.release(character)
