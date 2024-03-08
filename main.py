@@ -12,18 +12,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import drivehelper
+from constants import *
 
 
 
 
 class Typewriter:
     def __init__(self, **kwargs):
-        self.username = ""
-        self.password = ""
-        self.units = 0 
-        self.minDelay = 0
-        self.maxDelay = 0
-        self.counter = 0
+        self.username: str =  ""
+        self.password: str =  ""
+        self.units: int = 0 
+        self.minDelay: int = 0
+        self.maxDelay: int = 0
+        self.counter: int = 0
         
         self.menu()
 
@@ -78,42 +79,34 @@ class Typewriter:
                 print("User data loaded successfully.")
         except FileNotFoundError:
             print("No existing user data found.")
+            
+            
+    def betterPrint(self, message: str):#-----------------------------------------------------------------------------------------
+        print(Fore.CYAN + "[" + Fore.BLUE + "Process" + Fore.CYAN + "]" + Fore.RESET + f"{message}. . .")
+        
     
     def registerInfo(self):#-----------------------------------------------------------------------------------------
+        def check(variable):
+            if variable == "":
+                print(f"cant be empty")
+                time.sleep(2)
+                self.clear()
+                self.registerInfo()
+                
         self.username = input("Username:    ")
-        if self.username == "":
-            print("Please enter a username. . .")
-            time.sleep(2)
-            self.clear()
-            self.registerInfo()
+        check(self.username)
         
         self.password = input("Password:    ")
-        if self.username == "":
-            print("Please enter a password. . .")
-            time.sleep(2)
-            self.clear()
-            self.registerInfo()
+        check(self.password)
             
         self.units = input("How many Units:    ")
-        if self.username == "":
-            print("Please enter a units number. . .")
-            time.sleep(2)
-            self.clear()
-            self.registerInfo()
+        check(self.units)
             
         self.maxDelay = input("Maximum Delay:    ")
-        if self.username == "":
-            print("Please enter a maximum Delay number. . .")
-            time.sleep(2)
-            self.clear()
-            self.registerInfo()
+        check(self.maxDelay)
             
         self.minDelay = input("Minimum Delay:    ")
-        if self.username == "":
-            print("Please enter a minimum Delay number. . .")
-            time.sleep(2)
-            self.clear()
-            self.registerInfo()
+        check(self.minDelay)
 
     def clear(self):#-----------------------------------------------------------------------------------------
         os.system('cls||clear')
@@ -131,43 +124,43 @@ class Typewriter:
         driver = drivehelper.WebDrive(browser=browser, delay=5)
         driver.connectUrl(url='https://at4.typewriter.at/index.php?r=typewriter/runLevel')
         
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Getting user data. . .")
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Visiting website. . .")
+        self.betterPrint("Getting user data. . .")
+        self.betterPrint("Visiting website. . .")
 
-        driver.clickElement("/html/body/div[7]/div[2]/div[1]/div[2]/div[2]/button[1]/p")
+        driver.clickElement(COOKIES)
         
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Skipping Cookies. . .")
+        self.betterPrint("Skipping Cookies. . .")
         
-        driver.sendKeysToElement('//*[@id="LoginForm_username"]', self.username)
+        driver.sendKeysToElement(USERNAME, self.username)
         
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Sending username. . .")
+        self.betterPrint("Sending username. . .")
         
-        driver.sendKeysToElement('//*[@id="LoginForm_pw"]', self.password)
+        driver.sendKeysToElement(PASSWORD, self.password)
         
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Sending password. . .")
+        self.betterPrint("Sending password. . .")
         
-        driver.clickElement('/html/body/div[5]/div[2]/div[1]/form/div[3]/input')
+        driver.clickElement(LOGIN)
         
-        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Clicking login button. . .")
+        self.betterPrint("Clicking login button. . .")
         
         for x in range(int(self.units)):
             
             driver.clickElement('/html/body/div[5]/div[3]/div[2]/div[1]/a/div[3]')
         
-            print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Clicking unit button. . .")
+            self.betterPrint("Clicking unit button. . .")
                 
             driver.clickElement('/html/body/div[9]/div[3]/div/button')
                 
-            print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Clicking start button. . .")
+            self.betterPrint("Clicking start button. . .")
                 
-            print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Writing unit nr. " + str(x+1) + ". . .")
+            self.betterPrint(f"Writing unit nr. {str(x+1)} . . .")
                 
             while True:    
                 try:
                     time.sleep(float(random.uniform(float(self.minDelay), float(self.maxDelay))))
 
                     element = WebDriverWait(browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, '/html/body/div[5]/div[2]/div[3]/div[2]/div[2]/span[1]')))
+                    EC.visibility_of_element_located((By.XPATH, LETTER)))
                     character = element.text
                     
 
@@ -175,7 +168,7 @@ class Typewriter:
                     keyboard.press(character)
                     keyboard.release(character)
             
-                    chars = browser.find_element(By.XPATH, '/html/body/div[5]/div[2]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/span').text
+                    chars = browser.find_element(By.XPATH, LETTER_NUM).text
 
                 except:
                     
@@ -183,18 +176,16 @@ class Typewriter:
                     print("Characters: " + chars)
 
                     if chars == "0":
-                        print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Restarting Unit. . .")
+                        self.betterPrint("Restarting unit")
                         break
-                    else: 
-                        continue
             
-            driver.clickElement('/html/body/div[5]/div[1]/div[2]/ul/li[1]/a/div/img')
+            driver.clickElement(HOUSE)
             
-            print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Clicking house button. . .")
+            self.betterPrint("Clicking house button. . .")
             
-            driver.clickElement('//*[@id="contentBody"]/div[2]/div[1]/a')
+            driver.clickElement(UNIT)
             
-            print(Fore.CYAN + "[" + Fore.BLUE + "Progress" + Fore.CYAN + "]" + Fore.RESET + "Clicking unit button. . .")
+            self.betterPrint("Clicking unit button. . .")
                             
                     
 
