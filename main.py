@@ -53,12 +53,6 @@ class Typewriter:
             self.registerInfo()
             self.saveInfo()
             self.start()
-        elif saveData == "susmi":
-            self.username = "Susmi"
-            self.password = "JosefistCool15?"
-            self.units = 1
-            self.clear()
-            self.start()
         else:
             print("Please pick no or yes. . .")
             time.sleep(2)
