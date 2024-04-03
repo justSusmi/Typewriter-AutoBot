@@ -98,33 +98,45 @@ class Typewriter:
         
     
     def registerInfo(self):#-----------------------------------------------------------------------------------------
-        def check(variable):
-            if variable == "":
-                print(f"cant be empty")
-                time.sleep(2)
-                self.clear()
-                self.registerInfo()
+        def restart():
+            time.sleep(2)
+            self.clear()
+            self.registerInfo()
                 
         self.username = input("Username:    ")
-        check(self.username)
+        if self.username == "":
+            print("Username can't be empty!")
+            restart()
         
         self.password = input("Password:    ")
-        check(self.password)
+        if self.password == "":
+            print("Password can't be empty!")
+            restart()
             
         self.units = input("How many Units:    ")
-        check(self.units)
+        if not self.units.isdigit():
+            print("Units can only be integer!")
+            restart()
             
         self.maxDelay = input("Maximum Delay:    ")
-        check(self.maxDelay)
+        if self.maxDelay.isalpha():
+            print("Maximum Delay can only be float or integer!")
+            restart()
             
         self.minDelay = input("Minimum Delay:    ")
-        check(self.minDelay)
+        if self.maxDelay.isalpha():
+            print("Minimum Delay can only be float or integer!")
+            restart()
 
         self.maxMistakes = input("Maximum Mistakes:    ")
-        check(self.maxMistakes)
+        if self.maxMistakes.isalpha():
+            print("Maximum Mistakes can only be float or integer!")
+            restart()
             
         self.minMistakes = input("Minimum Mistakes:    ")
-        check(self.minMistakes)
+        if self.minMistakes.isalpha():
+            print("Minimum Mistakes can only be float or integer!")
+            restart()
 
     def clear(self):#-----------------------------------------------------------------------------------------
         os.system('cls||clear')
@@ -168,11 +180,12 @@ class Typewriter:
         
         for x in range(int(self.units)):
             mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
+            print(mistakes)
               
-            driver.clickElement(UNIT) 
+            driver.clickElement(UNIT)
         
             self.betterPrint("Clicking unit button. . .")
-                
+                                 
             driver.clickElement(START)
                 
             self.betterPrint("Clicking start button. . .")
