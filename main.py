@@ -21,10 +21,13 @@ class Typewriter:
     def __init__(self, **kwargs):
         self.username: str =  ""
         self.password: str =  ""
-        self.units: int = 0 
+        self.units: int = 0
         self.minDelay: int = 0
         self.maxDelay: int = 0
         self.counter: int = 0
+        self.minMistakes: int = 0
+        self.maxMistakes: int = 0
+
         
         self.menu()
 
@@ -66,7 +69,9 @@ class Typewriter:
             'password': self.password,
             'units': self.units,
             'minDelay': self.minDelay,
-            'maxDelay': self.maxDelay
+            'maxDelay': self.maxDelay,
+            'minMistakes': self.minMistakes,
+            'maxMistakes': self.maxMistakes
         }
 
         with open('user_data.json', 'w') as json_file:
@@ -81,6 +86,8 @@ class Typewriter:
                 self.units = data['units']
                 self.minDelay = data['minDelay']
                 self.maxDelay = data['maxDelay']
+                self.minMistakes = data['minMistakes']
+                self.maxMistakes = data['maxMistakes']
                 print("User data loaded successfully.")
         except FileNotFoundError:
             print("No existing user data found.")
@@ -113,17 +120,28 @@ class Typewriter:
         self.minDelay = input("Minimum Delay:    ")
         check(self.minDelay)
 
+        self.maxMistakes = input("Maximum Mistakes:    ")
+        check(self.maxMistakes)
+            
+        self.minMistakes = input("Minimum Mistakes:    ")
+        check(self.minMistakes)
+
     def clear(self):#-----------------------------------------------------------------------------------------
         os.system('cls||clear')
         
+
+    def writeError(self, error):#-----------------------------------------------------------------------------------------
+        with open('error.txt', 'w') as file:
+            file.write(error)
+
+
     def start(self):#-----------------------------------------------------------------------------------------
-        
-        current_directory = os.getcwd()
-        geckodriver_path = os.path.join(current_directory, "Typefucker-main", "geckodriver")
-        
-        options = Options()
-        options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-        browser = webdriver.Firefox(options=options, executable_path=geckodriver_path)
+        try:
+            options = Options()
+            options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
+            browser = webdriver.Firefox(options=options)
+        except Exception as e:
+            self.writeError(e)
 
 
         driver = drivehelper.WebDrive(browser=browser, delay=5)
@@ -149,8 +167,9 @@ class Typewriter:
         self.betterPrint("Clicking login button. . .")
         
         for x in range(int(self.units)):
-            
-            driver.clickElement(UNIT)
+            mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
+              
+            driver.clickElement(UNIT) 
         
             self.betterPrint("Clicking unit button. . .")
                 
@@ -172,6 +191,15 @@ class Typewriter:
                     keyboard = Controller() 
                     keyboard.press(character)
                     keyboard.release(character)
+
+                    if mistakes != 0:
+                        mistakes = mistakes-1
+                        if character == "a":
+                            keyboard.press("q")
+                            keyboard.release("q")
+                        else:
+                            keyboard.press("a")
+                            keyboard.release("a")
             
                     chars = browser.find_element(By.XPATH, LETTER_NUM).text
 
