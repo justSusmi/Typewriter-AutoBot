@@ -1,4 +1,4 @@
-# Typefucke
+# Typewrite AutoBot
 This Software is for educational purposes only! I do not take responsibility for any actions or crimes.
 
 Install Python
