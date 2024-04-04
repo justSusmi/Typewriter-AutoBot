@@ -1,14 +1,17 @@
 # Typewrite AutoBot
+
 This Software is for educational purposes only! I do not take responsibility for any actions or crimes.
+
+INSTALLING-------------------------------------------------------------------------------------------------------------
 
 Install Python
 
 Execute install.bat
 
-Now you can use Typefucker
+Now you can use Typefu
 
 
-Variable Explanation:
+Variable Explanation---------------------------------------------------------------------------------------------------
 
 The delay is specified in seconds, if you want to wait one second between characters, for example, take 1 as the value for half a second 0.5
 
