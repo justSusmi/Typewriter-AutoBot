@@ -8,8 +8,6 @@ Install Python
 
 Execute install.bat
 
-Now you can use Typefu
-
 
 Variable Explanation---------------------------------------------------------------------------------------------------
 
