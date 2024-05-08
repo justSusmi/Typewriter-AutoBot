@@ -3,7 +3,7 @@
 
 <div id="header" align="center">
   <img src="https://www.gifcen.com/wp-content/uploads/2022/03/among-us-gif-4.gif")
-" width="1000"/>
+" width="400"/>
 </div>
 
 
