@@ -3,7 +3,13 @@
 
 <div id="header" align="center">
   <img src="https://www.gifcen.com/wp-content/uploads/2022/03/among-us-gif-4.gif")
-" width="400"/>
+" width="300"/>
+</div>
+
+<div id="badges">
+  <a href="https://www.youtube.com/channel/UCUpf3qz-TVefKfYG3WNArEw">
+    <img src="https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Youtube Badge"/>
+  </a>
 </div>
 
 
