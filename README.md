@@ -1,5 +1,12 @@
 # Typewrite AutoBot
 
+
+<div id="header" align="center">
+  <img src="https://www.gifcen.com/wp-content/uploads/2022/03/among-us-gif-4.gif")
+" width="100"/>
+</div>
+
+
 This Software is for educational purposes only! I do not take responsibility for any actions or crimes.
 
 INSTALLING-------------------------------------------------------------------------------------------------------------
