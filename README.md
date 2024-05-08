@@ -6,7 +6,7 @@
 " width="300"/>
 </div>
 
-#Tutorial on Youtube
+# Tutorial on Youtube
 
 <div id="badges">
   <a href="https://www.youtube.com/channel/UCUpf3qz-TVefKfYG3WNArEw">
@@ -24,7 +24,7 @@ Install Python
 Execute install.bat
 
 
-# Variable Explanation---------------------------------------------------------------------------------------------------
+# Variable Explanation
 
 The delay is specified in seconds, if you want to wait one second between characters, for example, take 1 as the value for half a second 0.5
 
