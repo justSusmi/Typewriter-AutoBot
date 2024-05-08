@@ -2,4 +2,4 @@
 title Typefucker
 cls
 pip install -r requirements.txt
-python main.py
+python Code/main.py
