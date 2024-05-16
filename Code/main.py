@@ -4,7 +4,7 @@ import time
 import json
 
 from colorama import *
-from colorama import Back, Fore, Style
+from colorama import Fore
 from pynput.keyboard import Controller
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
