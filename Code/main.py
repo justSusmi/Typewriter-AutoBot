@@ -28,6 +28,7 @@ class Typewriter:
         self.counter: int = 0
         self.minMistakes: int = 0
         self.maxMistakes: int = 0
+        self.chars = 0
 
         
         self.menu()
@@ -185,11 +186,13 @@ class Typewriter:
         
         self.betterPrint("Clicking login button. . .")
         
+        
+        
         for x in range(int(self.units)):
             mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
-            print(mistakes)
               
-            driver.clickElement(UNIT)
+            time.sleep(0.9)  
+            driver.clickElement("/html/body/div[5]/div[1]/div[2]/ul/li[3]/a/div/img")  
         
             self.betterPrint("Clicking unit button. . .")
                                  
@@ -201,10 +204,13 @@ class Typewriter:
                 
             while True:    
                 try:
-                    time.sleep(float(random.uniform(float(self.minDelay), float(self.maxDelay))))
+                    delay = random.uniform(int(self.minDelay), int(self.maxDelay))
+                    
+                    time.sleep(delay / 6000)
+                    
 
                     element = WebDriverWait(browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, LETTER)))
+                    EC.visibility_of_element_located((By.XPATH, "/html/body/div[5]/div[2]/div[3]/div[2]/div[2]/span[1]")))
                     character = element.text
                     
 
@@ -220,15 +226,19 @@ class Typewriter:
                         else:
                             keyboard.press("a")
                             keyboard.release("a")
-            
-                    chars = browser.find_element(By.XPATH, LETTER_NUM).text
 
-                except:
+                    try:
+                        self.chars = browser.find_element(By.XPATH, LETTER_NUM).text
+                    except:
+                        print("No Char Size rn")
+
+                except Exception as e:
+                    #print(str(e))
                     
                     print("EXCEPT!!!")
-                    print("Characters: " + chars)
+                    print("Characters: " + str(self.chars))
 
-                    if chars == "0":
+                    if self.chars == "0":
                         self.betterPrint("Restarting unit")
                         break
             
