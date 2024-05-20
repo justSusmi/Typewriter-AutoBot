@@ -24,7 +24,7 @@ Execute install.bat
 
 # Variable Explanation
 
-
+The delay is specified in strokes per 10 minutes
 
 # Known Languages
 
