@@ -91,10 +91,11 @@ class Typewriter:
                 self.minMistakes = data['minMistakes']
                 self.maxMistakes = data['maxMistakes']
                 print("User data loaded successfully.")
-        except FileNotFoundError:
+        except Exception as e:
             print("No existing user data found.")
+            time.sleep(1)
             self.menu()
-            
+                                
             
     def betterPrint(self, message: str):#-----------------------------------------------------------------------------------------
         print(Fore.CYAN + "[" + Fore.BLUE + "Process" + Fore.CYAN + "]" + Fore.RESET + f"{message}. . .")
@@ -162,9 +163,13 @@ class Typewriter:
         firefox_options = Options()
         firefox_options.binary = FirefoxBinary(firefox_binary_path)
         
-        browser = webdriver.Firefox(executable_path=gecko_driver_path, options=firefox_options)
-
-        driver = drivehelper.WebDrive(browser=browser,  delay=5)
+        try:
+            browser = webdriver.Firefox(executable_path=gecko_driver_path, options=firefox_options)
+            driver = drivehelper.WebDrive(browser=browser,  delay=5)
+        except Exception as e:
+            print("Selenium-Driver-Error: " + str(e))
+            time.sleep(2)
+        
         driver.connectUrl(url='https://at4.typewriter.at/index.php?r=typewriter/runLevel')
         
         self.betterPrint("Getting user data. . .")
@@ -192,7 +197,7 @@ class Typewriter:
             mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
               
             time.sleep(0.9)  
-            driver.clickElement("/html/body/div[5]/div[1]/div[2]/ul/li[3]/a/div/img")  
+            driver.clickElement(UNIT)  
         
             self.betterPrint("Clicking unit button. . .")
                                  
@@ -210,7 +215,7 @@ class Typewriter:
                     
 
                     element = WebDriverWait(browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, "/html/body/div[5]/div[2]/div[3]/div[2]/div[2]/span[1]")))
+                    EC.visibility_of_element_located((By.XPATH, TEXT)))
                     character = element.text
                     
 

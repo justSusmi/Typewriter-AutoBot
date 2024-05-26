@@ -106,16 +106,3 @@ class WebDrive:
             print(Fore.CYAN + "[" + Fore.BLUE + "ERROR" + Fore.CYAN + "]" + Fore.RESET + f" Can't click Coordinates:   {str(e)}")
 
 #------------------------------------------------------------------------------------------------------------------------------------
-
-if __name__ == "__main__":
-
-
-    options = Options()
-    options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-    browser = webdriver.Firefox(options=options)
-
-
-    driver = WebDrive(browser=browser, delay=10)
-    driver.connectUrl(url='https://www.onlinetexteditor.com/')
-    driver.clearInput('//*[@id="text"]')
-    driver.sendKeysToElement('//*[@id="text"]', "Fettjamin ist ein fetter Spastjamin!")
