@@ -200,9 +200,11 @@ class Typewriter:
             time.sleep(2)  
             driver.clickElement(UNIT)  
         
-            self.betterPrint("Clicking unit button. . .")
+            self.betterPrint("Clicking letter. . .")
                                  
-            driver.clickElement(START)
+            keyboard = Controller() 
+            keyboard.press("a")
+            keyboard.release("a")
                 
             self.betterPrint("Clicking start button. . .")
                 
