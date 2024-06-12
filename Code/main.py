@@ -15,6 +15,7 @@ import drivehelper
 from constants import *
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import platform
+import getpass
 
 
 
@@ -112,7 +113,7 @@ class Typewriter:
             print("Username can't be empty!")
             restart()
         
-        self.password = input("Password:    ")
+        self.password = getpass.getpass("Password:    ")
         if self.password == "":
             print("Password can't be empty!")
             restart()
@@ -196,7 +197,7 @@ class Typewriter:
         for x in range(int(self.units)):
             mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
               
-            time.sleep(0.9)  
+            time.sleep(2)  
             driver.clickElement(UNIT)  
         
             self.betterPrint("Clicking unit button. . .")
@@ -206,12 +207,14 @@ class Typewriter:
             self.betterPrint("Clicking start button. . .")
                 
             self.betterPrint(f"Writing unit nr. {str(x+1)} . . .")
+
+            random_numbers = []
                 
             while True:    
                 try:
                     delay = random.uniform(int(self.minDelay), int(self.maxDelay))
                     
-                    time.sleep(delay / 6000)
+                    time.sleep(delay)
                     
 
                     element = WebDriverWait(browser, 5).until(
@@ -223,8 +226,20 @@ class Typewriter:
                     keyboard.press(character)
                     keyboard.release(character)
 
-                    if mistakes != 0:
-                        mistakes = mistakes-1
+
+                    try:
+                        self.chars = int(browser.find_element(By.XPATH, LETTER_NUM).text)
+
+                        if not random_numbers:
+                            random_numbers = random.sample(range(0, self.chars + 1), mistakes)
+                            self.betterPrint(f"Random mistake positions: {str(random_numbers)}")
+                    except Exception as e:
+                        print("Exception" + str(e))
+
+
+
+                    if self.chars in random_numbers:
+                        self.betterPrint("Made a mistake at: " + str(self.chars))
                         if character == "a":
                             keyboard.press("q")
                             keyboard.release("q")
@@ -232,22 +247,16 @@ class Typewriter:
                             keyboard.press("a")
                             keyboard.release("a")
 
-                    try:
-                        self.chars = browser.find_element(By.XPATH, LETTER_NUM).text
-                    except:
-                        print("No Char Size rn")
 
                 except Exception as e:
-                    #print(str(e))
-                    
-                    print("EXCEPT!!!")
-                    print("Characters: " + str(self.chars))
-
-                    if self.chars == "0":
+                    if self.chars == 0:
+                        print(" \n")
+                        print(" \n")
                         self.betterPrint("Restarting unit")
                         break
+                    
             
-            driver.clickElement(HOUSE)
+            driver.clickElementJavascript(HOUSE)
             
             self.betterPrint("Clicking house button. . .")
             
