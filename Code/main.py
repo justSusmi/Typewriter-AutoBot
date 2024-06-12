@@ -214,7 +214,7 @@ class Typewriter:
                 
             while True:    
                 try:
-                    delay = random.uniform(int(self.minDelay), int(self.maxDelay))
+                    delay = random.uniform(float(self.minDelay), float(self.maxDelay))
                     
                     time.sleep(delay)
                     
