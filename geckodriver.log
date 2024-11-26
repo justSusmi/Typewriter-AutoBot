@@ -2468,3 +2468,129 @@ JavaScript warning: https://pagead2.googlesyndication.com/bg/GMN2JkzbUaH4phdfd8x
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1732661366445	geckodriver	INFO	Listening on 127.0.0.1:49686
+1732661369456	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49687" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Susmi\\AppData\\Local\\Temp\\rust_mozprofileJuzqrM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1732661369725	Marionette	INFO	Marionette enabled
+1732661369818	Marionette	INFO	Listening on port 49694
+WebDriver BiDi listening on ws://127.0.0.1:49687
+Read port: 49694
+1732661369927	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://at4.typewriter.at."
+console.warn: "Listener for event 'frame' did not return a p1732661390685	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49736" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Susmi\\AppData\\Local\\Temp\\rust_mozprofileHs3Grr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1732661390868	Marionette	INFO	Marionette enabled
+1732661390960	Marionette	INFO	Listening on port 49746
+WebDriver BiDi listening on ws://127.0.0.1:49736
+Read port: 49746
+1732661391051	RemoteAgent	WARN	TLSExiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+esyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/RJ33JqD_0F92LrPnHN8EXix2XvuHBMyQtF5rvO_qZuc.js line 2 > eval line 6893 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://at4.typewriter.at."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://at4.typewriter.at."
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js, line 244: Script terminated by timeout at:
+po/w<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:244:156
+M/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:91:480
+L/this.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+R/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:101:1469
+L/this.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+T/</</d<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:102:355
+L/this.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+M/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:91:473
+L/this.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:90:888
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+ih/c/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:131:320
+Xa@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:49:339
+Ua.prototype.flush@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:49:127
+Wa@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:483
+ih/c/</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:131:292
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+qg/</</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:515
+Ta.prototype.Vb/<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:315
+qg/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:524
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+qg/</</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:515
+Ta.prototype.Vb/<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:48:315
+qg/</</<@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:121:524
+vc.prototype.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:81:218
+n.Gd@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:756
+n.next@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:80:523
+h@https://pagead2.googlesyndication.com/pagead/managed/js/activeview/current/ufs_web_display.js:93:477
+
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript error: resource://gre/actors/FormHandlerChild.sys.mjs, line 103: InvalidStateError: JSWindowActorChild.document getter: Cannot access property 'document' after actor 'FormHandler' has been destroyed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/RJ33JqD_0F92LrPnHN8EXix2XvuHBMyQtF5rvO_qZuc.js line 2 > eval line 1134 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1732661479617	geckodriver	INFO	Listening on 127.0.0.1:49900
+1732661482646	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49901" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Susmi\\AppData\\Local\\Temp\\rust_mozprofilelpAqBw"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1732661482823	Marionette	INFO	Marionette enabled
+1732661482909	Marionette	INFO	Listening on port 49908
+WebDriver BiDi listening on ws://127.0.0.1:49901
+Read port: 49908
+1732661482996	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript warning: https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202411180101/slotcar_library_fy2021.js?bust=31089116, line 126: Script terminated by timeout at:
+ni/<@https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202411180101/slotcar_library_fy2021.js?bust=31089116:126:389
+Hd/</<@https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202411180101/slotcar_library_fy2021.js?bust=31089116:36:780
+Gd@https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202411180101/slotcar_library_fy2021.js?bust=31089116:36:574
+Hd/<@https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202411180101/slotcar_library_fy2021.js?bust=31089116:36:769
+
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+1732661494263	Marionette	INFO	Stopped listening on port 49908
+Dynamically enable window occlusion 1
+console.error: "Error in worker resource://devtools/client/shared/source-map-loader/worker.js" ": "
+1732661508462	geckodriver	INFO	Listening on 127.0.0.1:49951
+1732661511491	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49952" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Susmi\\AppData\\Local\\Temp\\rust_mozprofileGamxcZ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1732661511674	Marionette	INFO	Marionette enabled
+1732661511759	Marionette	INFO	Listening on port 49959
+WebDriver BiDi listening on ws://127.0.0.1:49952
+Read port: 49959
+1732661511843	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://at4.typewriter.at."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://at4.typewriter.at."
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript error: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9673403905882680, line 95: TagError: adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page.
+JavaScript error: resource://gre/actors/FormHandlerChild.sys.mjs, line 103: InvalidStateError: JSWindowActorChild.document getter: Cannot access property 'document' after actor 'FormHandler' has been destroyed
+JavaScript warning: https://pagead2.googlesyndication.com/bg/RJ33JqD_0F92LrPnHN8EXix2XvuHBMyQtF5rvO_qZuc.js line 2 > eval line 3388 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

@@ -1,4 +1,4 @@
-COOKIES = "/html/body/div[7]/div[2]/div[1]/div[2]/div[2]/button[1]/p"
+COOKIES = "/html/body/div[7]/div[2]/div[2]/div[2]/div[2]/button[1]"
 USERNAME = '//*[@id="LoginForm_username"]'
 PASSWORD = '//*[@id="LoginForm_pw"]'
 LOGIN = '/html/body/div[5]/div[2]/div[1]/form/div[3]/input'
