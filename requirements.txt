@@ -1,4 +1,0 @@
-pynput==1.7.4
-colorama==0.4.4
-selenium==4.0.0
-PyQt5==5.15.15
