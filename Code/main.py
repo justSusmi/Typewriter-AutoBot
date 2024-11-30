@@ -8,6 +8,7 @@ import random
 import time
 import json
 from selenium.webdriver.firefox.service import Service
+from tkinter import PhotoImage
 
 from pynput.keyboard import Controller
 from selenium.webdriver.common.by import By
@@ -20,12 +21,11 @@ from constants import *
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import platform
 
-
 class WorkerThread(threading.Thread):
     def __init__(self, main_window):
         super().__init__()
         self.main_window = main_window
-    
+        self.should_stop = threading.Event()
     
 
     def saveInfo(self):#-----------------------------------------------------------------------------------------
@@ -60,6 +60,7 @@ class WorkerThread(threading.Thread):
         except Exception as e:
             print(e)
             self.main_window.betterPrint("No existing user data found. . .")
+            self.should_stop.set()
             return
         
         self.username: str =  self.username if self.username else ""
@@ -120,7 +121,7 @@ class WorkerThread(threading.Thread):
         
         
         
-        for x in range(int(self.units)):
+        for x in range(int(self.units)):        
             mistakes = random.randint(int(self.minMistakes), int(self.maxMistakes))
            
             time.sleep(2)  
@@ -154,10 +155,13 @@ class WorkerThread(threading.Thread):
                     keyboard.press(character)
                     keyboard.release(character)
 
+                    try:
+                        self.chars = int(browser.find_element(By.XPATH, LETTER_NUM).text)
+                    except:
+                        continue
+                    
                     if mistakes != 0:
                         try:
-                            self.chars = int(browser.find_element(By.XPATH, LETTER_NUM).text)
-
                             if not random_numbers:
                                 random_numbers = random.sample(range(0, self.chars + 1), mistakes)
                                 self.main_window.betterPrint(f"Random mistake positions: {str(random_numbers)}")
@@ -176,6 +180,11 @@ class WorkerThread(threading.Thread):
                                 keyboard.release("a")
 
                 except Exception as e:
+                    if int(self.units)-1 == x:
+                        self.main_window.betterPrint("Stopping Program")
+                        driver.quit()
+                        self.should_stop.set()
+                        return
                     if self.chars == 0:
                         self.main_window.betterPrint("Restarting unit")
                         break
@@ -195,6 +204,12 @@ class MainWindow(tk.Tk):
 
         self.title("Typefucker")
         self.geometry("400x600")
+        
+        try:
+            icon = PhotoImage(file="typefucker_logo.png") 
+            self.wm_iconphoto(True, icon)      
+        except Exception as e:
+            print(f"Error while loading image: {e}")
         
         self.worker_thread = WorkerThread(self)
         
@@ -259,14 +274,23 @@ class MainWindow(tk.Tk):
         
         return page2_frame
 
-    def validate_and_submit(self):
+    def start_task(self):
+        if self.worker_thread and self.worker_thread.is_alive():
+            self.betterPrint("Program is already running, Please Wait!")
+            return
+
+        self.worker_thread = WorkerThread(self)
+        self.worker_thread.start()
+        self.betterPrint("Started Program")
+
+    def validate_and_submit(self):                    
         self.username = self.username_input.get().strip()
         self.password = self.password_input.get().strip()
         self.units = self.units_input.get().strip()
         self.max_delay = self.max_delay_input.get().strip()
         self.min_delay = self.min_delay_input.get().strip()
         self.max_mistakes = self.max_mistakes_input.get().strip()
-        self.min_mistakes = self.min_mistakes_input.get().strip()
+        self.min_mistakes = self.min_mistakes_input.get().strip() 
 
         if not self.username:
             self.show_error("Username cannot be empty!")
@@ -320,9 +344,6 @@ class MainWindow(tk.Tk):
 
     def betterPrint(self, message: str):
         self.after(0, lambda: self.update_list_widget(message))
-
-    def start_task(self):
-        self.worker_thread.start()
 
     def switch_to_page1(self):
         self.page2.pack_forget()
