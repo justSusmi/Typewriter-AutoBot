@@ -53,7 +53,6 @@ class WorkerThread(threading.Thread):
         try:
             self.loadInfo()
         except Exception as e:
-            self.main_window.betterPrint(e)
             self.main_window.betterPrint("No existing user data found. . .")
             self.should_stop.set()
             return

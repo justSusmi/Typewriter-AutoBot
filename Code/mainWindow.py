@@ -37,31 +37,31 @@ class MainWindow(tk.Tk):
         
         page2_frame = tk.Frame(self, bg="#424549")
         
-        self.username_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.username_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.username_input.pack(pady=5)
         self.username_input.insert(0, "Username")
         
-        self.password_input = tk.Entry(page2_frame, show="*", bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.password_input = tk.Entry(page2_frame, show="*", bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.password_input.pack(pady=5)
         self.password_input.insert(0, "Password")
         
-        self.units_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.units_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.units_input.pack(pady=5)
         self.units_input.insert(0, "Units")
         
-        self.max_delay_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.max_delay_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.max_delay_input.pack(pady=5)
-        self.max_delay_input.insert(0, "Max Delay")
+        self.max_delay_input.insert(0, "Max Strokes per 10 minutes")
         
-        self.min_delay_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.min_delay_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.min_delay_input.pack(pady=5)
-        self.min_delay_input.insert(0, "Min Delay")
+        self.min_delay_input.insert(0, "Min Strokes per 10 minutes")
         
-        self.max_mistakes_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.max_mistakes_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.max_mistakes_input.pack(pady=5)
         self.max_mistakes_input.insert(0, "Max Mistakes")
         
-        self.min_mistakes_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
+        self.min_mistakes_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14), width=30)
         self.min_mistakes_input.pack(pady=5)
         self.min_mistakes_input.insert(0, "Min Mistakes")
     
@@ -181,7 +181,7 @@ class MainWindow(tk.Tk):
             self.min_mistakes_input.insert(0, user_data.get("minMistakes", ""))
             
         except Exception as e:
-            self.betterPrint("Es gibt noch keine User Daten!" + str(e))
+            self.betterPrint("Es gibt noch keine User Daten!")
         
 
     def update_list_widget(self, message):
