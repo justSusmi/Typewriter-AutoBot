@@ -1,16 +1,10 @@
-import sys
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
 import threading
 import time
 import random
 import time
 import json
 from selenium.webdriver.firefox.service import Service
-from tkinter import PhotoImage
-import os
-import subprocess
+
 
 from pynput.keyboard import Controller
 from selenium.webdriver.common.by import By
@@ -20,7 +14,6 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import drivehelper
 from constants import *
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import platform
 
 class WorkerThread(threading.Thread):

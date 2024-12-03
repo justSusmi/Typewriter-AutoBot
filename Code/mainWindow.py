@@ -1,19 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
-from selenium.webdriver.firefox.service import *
-from tkinter import PhotoImage
-import os
+import json
 
-from pynput.keyboard import *
-from selenium.webdriver.common.by import *
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 from constants import *
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from workerThread import WorkerThread
-import subprocess
 
 class MainWindow(tk.Tk):
     def __init__(self):
@@ -44,6 +34,7 @@ class MainWindow(tk.Tk):
         return page1_frame
 
     def create_page2(self):
+        
         page2_frame = tk.Frame(self, bg="#424549")
         
         self.username_input = tk.Entry(page2_frame, bg="#1e2124", fg="white", font=("Helvetica", 14))
@@ -163,6 +154,35 @@ class MainWindow(tk.Tk):
     def switch_to_page2(self):
         self.page1.pack_forget()
         self.page2.pack(fill="both", expand=True)
+        try:
+            with open("user_data.json", "r") as file:
+                user_data = json.load(file)
+
+            self.username_input.delete(0, tk.END)
+            self.username_input.insert(0, user_data.get("username", ""))
+            
+            self.password_input.delete(0, tk.END)
+            self.password_input.insert(0, user_data.get("password", ""))
+            
+            self.units_input.delete(0, tk.END)
+            self.units_input.insert(0, user_data.get("units", ""))
+            
+            self.max_delay_input.delete(0, tk.END)
+            self.max_delay_input.insert(0, user_data.get("maxDelay", ""))
+            
+            self.min_delay_input.delete(0, tk.END)
+            self.min_delay_input.insert(0, user_data.get("minDelay", ""))
+            
+            self.max_mistakes_input.delete(0, tk.END)
+            self.max_mistakes_input.insert(0, user_data.get("maxMistakes", ""))
+
+            
+            self.min_mistakes_input.delete(0, tk.END)
+            self.min_mistakes_input.insert(0, user_data.get("minMistakes", ""))
+            
+        except Exception as e:
+            self.betterPrint("Es gibt noch keine User Daten!" + str(e))
+        
 
     def update_list_widget(self, message):
         self.listbox.insert(tk.END, message)
