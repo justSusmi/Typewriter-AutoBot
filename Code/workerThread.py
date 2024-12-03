@@ -10,8 +10,6 @@ import json
 from selenium.webdriver.firefox.service import Service
 from tkinter import PhotoImage
 import os
-import win32console
-import win32gui
 import subprocess
 
 from pynput.keyboard import Controller
